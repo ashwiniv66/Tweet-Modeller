@@ -1,0 +1,16 @@
+For topic 8 the top 15 words are:
+0) sciencetwitter
+1) stanford
+2) nmedclinical
+3) 15
+4) patients
+5) like
+6) scientists
+7) phase
+8) trial
+9) brain
+10) diseases
+11) band
+12) body
+13) covid19
+14) risk

@@ -1,0 +1,29 @@
+<html>
+<script>
+    function httpGetAsync(theUrl, callback) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                callback(xmlHttp.responseText);
+        }
+        xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+        xmlHttp.send(null);
+    }
+    var url = "http://localhost:8080/bbchealthresult"
+
+</script>
+
+<head>
+    <title>HELLO</title>
+</head>
+
+<body>
+    <h1>BBCCONFIRM</h1>
+    <div style="display: flex;justify-content: center;">
+        <form action="http://localhost:8080/bbchealthresult" method=" GET">
+            <button type="submit" class="btn btn-primary btn-lg">Activate Process</button>
+        </form>
+    </div>
+</body>
+
+</html>

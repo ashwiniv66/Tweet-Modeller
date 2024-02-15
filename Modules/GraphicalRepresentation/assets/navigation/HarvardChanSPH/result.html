@@ -1,0 +1,245 @@
+<html>
+
+<head>
+    <title>PROJECT</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script>
+        function add() {
+            var element = document.createElement("input");
+            element.setAttribute("type", "button");
+            element.setAttribute("value", "GET TWEETS");
+            element.setAttribute("name", "button3");
+            element.setAttribute("onclick", "foo()");
+            element.className = "btn btn-primary btn-lg";
+            document.getElementById("buttons").appendChild(element);
+        }
+
+        function foo() {
+            console.log("foo")
+            var getcsv = "http://localhost:8080/getHarvardChanSPHresult"
+            httpGetAsync(getcsv, CSVToArray);
+        }
+
+        function CSVToArray(strData, strDelimiter) {
+            // Check to see if the delimiter is defined. If not,
+            // then default to comma.
+            strDelimiter = (strDelimiter || ",");
+
+            // Create a regular expression to parse the CSV values.
+            var objPattern = new RegExp(
+                (
+                    // Delimiters.
+                    "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+
+                    // Quoted fields.
+                    "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+
+                    // Standard fields.
+                    "([^\"\\" + strDelimiter + "\\r\\n]*))"
+                ),
+                "gi"
+            );
+
+
+            // Create an array to hold our data. Give the array
+            // a default empty first row.
+            var arrData = [[]];
+
+            // Create an array to hold our individual pattern
+            // matching groups.
+            var arrMatches = null;
+
+
+            // Keep looping over the regular expression matches
+            // until we can no longer find a match.
+            while (arrMatches = objPattern.exec(strData)) {
+
+                // Get the delimiter that was found.
+                var strMatchedDelimiter = arrMatches[1];
+
+                // Check to see if the given delimiter has a length
+                // (is not the start of string) and if it matches
+                // field delimiter. If id does not, then we know
+                // that this delimiter is a row delimiter.
+                if (
+                    strMatchedDelimiter.length &&
+                    strMatchedDelimiter !== strDelimiter
+                ) {
+
+                    // Since we have reached a new row of data,
+                    // add an empty row to our data array.
+                    arrData.push([]);
+
+                }
+
+                var strMatchedValue;
+
+                // Now that we have our delimiter out of the way,
+                // let's check to see which kind of value we
+                // captured (quoted or unquoted).
+                if (arrMatches[2]) {
+
+                    // We found a quoted value. When we capture
+                    // this value, unescape any double quotes.
+                    strMatchedValue = arrMatches[2].replace(
+                        new RegExp("\"\"", "g"),
+                        "\""
+                    );
+
+                } else {
+
+                    // We found a non-quoted value.
+                    strMatchedValue = arrMatches[3];
+
+                }
+
+
+                // Now that we have our value string, let's add
+                // it to the data array.
+                arrData[arrData.length - 1].push(strMatchedValue);
+            }
+
+            // Return the parsed data.
+            console.log(arrData);
+            startTable(arrData);
+            return (arrData);
+        }
+
+        function httpGetAsync(theUrl, callback) {
+            console.log("started req")
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.onreadystatechange = function () {
+
+                if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    console.log("rec")
+                    callback(xmlHttp.responseText);
+                    if (addBool) {
+                        add();
+                        addBool = false;
+                        clearInterval(buttonInterval);
+                    }
+                }
+            }
+            xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+            xmlHttp.send(null);
+        }
+
+        function generateTable(table, data) {
+            let idx = 0;
+            tbody = table.createTBody();
+            for (let element of data) {
+                idx++;
+                let row = tbody.insertRow();
+                let cell = row.insertCell();
+                let text = document.createTextNode(idx);
+                cell.appendChild(text);
+                cell = row.insertCell();
+                text = document.createTextNode(element);
+                cell.appendChild(text);
+            }
+
+        }
+
+        function generateTableHead(table, data) {
+            let thead = table.createTHead();
+            thead.className = "table-light"
+            let row = thead.insertRow();
+            for (let key of data) {
+                let th = document.createElement("th");
+                let text = document.createTextNode(key);
+                th.appendChild(text);
+                row.appendChild(th);
+            }
+        }
+
+
+        function startTable(data) {
+            let table = document.querySelector("table");
+            let dataRow = data[0];
+            generateTableHead(table, dataRow);
+            data.shift();
+            generateTable(table, data);
+        }
+        var addBool = true;
+        var url = "http://localhost:8080/HarvardChanSPHtest"
+        buttonInterval = setInterval(httpGetAsync(url, console.log), 1000)
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #00acee;
+
+
+
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+            margin-right: 70px;
+            text-transform: uppercase;
+            font-size: x-large;
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+        <ul class="navbar-nav">
+            <li class="nav-item ">
+                <a class="nav-link " href="home.html">
+                    Home
+                </a>
+            </li>
+
+            <li class="nav-item px-3 ">
+                <a class="nav-link" href="about.html">
+                    About
+                </a>
+            </li>
+
+            <li class="nav-item px-3 ">
+                <a class="nav-link" href="project_output.html">
+                    project output
+                </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">Twitter</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="https://twitter.com/bbchealth?lang=en">BBC Health News</a></li>
+                    <li><a class="dropdown-item" href="https://twitter.com/imaindiaorg?lang=en">Indian Medical
+                            Association</a></li>
+                    <li><a class="dropdown-item" href="https://twitter.com/harvardhealth?lang=en">Harvard Health</a>
+                    </li>
+                    <li><a class="dropdown-item"
+                            href="https://twitter.com/StanfordMed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Stanford
+                            Medicine</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <h1>Harvard Channel</h1>
+
+    <div id="buttons" style="display: flex;justify-content: center;margin: 20px;"></div>
+    <div style="display: flex;justify-content: center;margin: 20px;">
+        <table>
+            <!-- here goes our data! -->
+        </table>
+    </div>
+    <div style="display: flex;justify-content: center;">
+        <form action="http://localhost:8080/HarvardChanSPHnext" method="GET">
+            <button type="submit" class="btn btn-primary btn-lg">Convert Video</button>
+        </form>
+    </div>
+</body>
+
+</html>

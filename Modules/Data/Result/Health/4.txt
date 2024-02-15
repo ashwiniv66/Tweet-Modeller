@@ -1,0 +1,16 @@
+For topic 4 the top 15 words are:
+0) world
+1) acting
+2) national
+3) children
+4) covid19
+5) rapid
+6) nmedclinical
+7) patients
+8) blog
+9) wbw2021
+10) cell
+11) research
+12) mhtf
+13) policies
+14) breastfeeding

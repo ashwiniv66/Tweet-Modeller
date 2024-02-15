@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Login Form</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <style>
+    body {
+      background: #35aaf8;
+      padding-top: 25vh;
+    }
+
+    form {
+      background: #fff;
+
+    }
+
+    .form-container {
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0px 0px 10px 0px;
+    }
+  </style>
+  <script type='text/javascript'>
+    function validateform() {
+      var username = document.getElementById("usernameinput").value;
+      var password = document.getElementById("passwordinput").value;
+
+      if (username == "admin" && password == "admin") {
+        alert("Login Successful");
+        location.replace("home.html")
+
+      }
+      else {
+        alert("login failed");
+
+      }
+
+    }
+  </script>
+</head>
+
+<body>
+  <section class="container-fluid">
+    <section class="row justify-content-center">
+      <section class="col-12 col-sm-6 col-md-3">
+
+        <form class="form-container">
+          <h4 class="text-center font-weight-bold">Login Form</h4>
+          <div class="form-group">
+            <label for="inputEmail4" class="form-label">Username</label>
+            <input type="text" class="form-control" id="usernameinput" placeholder="Username">
+          </div>
+
+          <div class="form-group">
+            <label for="passwordinput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passwordinput" placeholder="Password">
+          </div>
+
+          <div class="form-group" style="margin: 10px;">
+            <a type="submit" class="btn btn-primary btn-block" onclick="validateform()">Login</a>
+          </div>
+        </form>
+
+      </section>
+    </section>
+  </section>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

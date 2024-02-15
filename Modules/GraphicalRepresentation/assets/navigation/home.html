@@ -1,0 +1,165 @@
+<html>
+
+<head>
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .navbar-nav {
+      margin-left: auto;
+      margin-right: 70px;
+      text-transform: uppercase;
+      font-size: x-large;
+      font-weight: bolder;
+    }
+
+    .carousel-item {
+      height: 95vh;
+      min-height: 200px;
+      background: no-repeat scroll center scroll;
+      -webkit-background-size: cover;
+      background-size: contain;
+    }
+
+    .carousel-item::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: #000;
+      opacity: 0.25;
+    }
+
+    .title {
+      text-transform: uppercase;
+      position: absolute;
+      text-align: center;
+      top: 40%;
+      left: 0%;
+    }
+
+    .title h1 {
+      color: #fff;
+      border-color: black;
+      -webkit-text-stroke-width: 0.4px;
+      -webkit-text-stroke-color: black;
+
+    }
+
+    .button {
+      position: absolute;
+      top: 60%;
+      left: 45%;
+    }
+  </style>
+</head>
+
+
+<body>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light">
+
+    <ul class="navbar-nav">
+      <li class="nav-item ">
+        <a class="nav-link " href="home.html">
+          Home
+        </a>
+      </li>
+
+      <li class="nav-item px-3 ">
+        <a class="nav-link" href="about.html">
+          About
+        </a>
+      </li>
+
+      <li class="nav-item px-3 ">
+        <a class="nav-link" href="project_output.html">
+          project output
+        </a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+          aria-expanded="false">Twitter</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="https://twitter.com/bbchealth?lang=en">BBC Health News</a></li>
+          <li><a class="dropdown-item" href="https://twitter.com/imaindiaorg?lang=en">IMA</a></li>
+          <li><a class="dropdown-item" href="https://twitter.com/harvardhealth?lang=en">Harvard Health</a></li>
+          <li><a class="dropdown-item"
+              href="https://twitter.com/StanfordMed?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Stanford
+              Medicine</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+
+
+
+  <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="../img/1.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="../img/2.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="../img/3.png" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+
+
+  <div class="title">
+    <h1>Topic modelling on Twitter Tweets based on Public Health and Medical Topics Sources</h1>
+  </div>
+
+  <div class="button">
+    <a href="project_output.html"><button type="button" class="btn btn-primary btn-lg"
+        href="project_output.html">Project output</button></a>
+  </div>
+
+
+</body>
+
+</html>
